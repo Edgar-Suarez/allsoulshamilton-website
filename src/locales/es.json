@@ -1,0 +1,98 @@
+{
+  "site": {
+    "name": "Parroquia Nuestra Señora de Todas las Almas",
+    "shortName": "Parroquia All Souls",
+    "location": "Hamilton, Ontario"
+  },
+  "nav": {
+    "schedule": "Horarios de Misa",
+    "bulletin": "Boletín Semanal",
+    "sacraments": "Sacramentos",
+    "donate": "Donar",
+    "menuLabel": "Abrir menú",
+    "languages": { "en": "EN", "es": "ES", "it": "IT" }
+  },
+  "hero": {
+    "welcome": "Bienvenidos a Nuestra Parroquia",
+    "subtitle": "Una comunidad de fe, esperanza y amor en el corazón de Hamilton.",
+    "cta": {
+      "schedule": "Horarios de Misa",
+      "bulletin": "Boletín Semanal",
+      "sacraments": "Sacramentos"
+    }
+  },
+  "schedule": {
+    "title": "Horarios de Misa",
+    "subtitle": "Todos están bienvenidos a unirse a la celebración de la Eucaristía.",
+    "headers": {
+      "day": "Día",
+      "time": "Hora",
+      "language": "Idioma",
+      "notes": "Notas"
+    },
+    "masses": [
+      { "day": "Lunes – Viernes", "time": "9:00 AM",  "language": "Inglés",   "notes": "" },
+      { "day": "Sábado",          "time": "9:00 AM",  "language": "Inglés",   "notes": "" },
+      { "day": "Sábado",          "time": "5:00 PM",  "language": "Inglés",   "notes": "Misa de Vigilia" },
+      { "day": "Domingo",         "time": "8:00 AM",  "language": "Inglés",   "notes": "" },
+      { "day": "Domingo",         "time": "10:00 AM", "language": "Español",  "notes": "" },
+      { "day": "Domingo",         "time": "12:00 PM", "language": "Italiano", "notes": "" },
+      { "day": "Domingo",         "time": "5:00 PM",  "language": "Inglés",   "notes": "" }
+    ]
+  },
+  "donations": {
+    "title": "Apoya Nuestra Parroquia",
+    "subtitle": "Tu generosidad sostiene nuestra comunidad y los ministerios que compartimos.",
+    "interac": {
+      "title": "Interac e-Transfer",
+      "description": "Envía tu donación de forma segura a:",
+      "email": "allsoulshamilton@hamiltondiocese.com",
+      "instructions": "No requiere pregunta de seguridad — tu donación llega automáticamente."
+    },
+    "envelope": {
+      "title": "Sobre de Ofrenda Semanal",
+      "description": "Recoge tu paquete de sobres en la oficina parroquial o después de cualquier Misa del domingo."
+    },
+    "preauthorized": {
+      "title": "Donación Mensual Pre-Autorizada",
+      "description": "Configura contribuciones mensuales automáticas. Contacta nuestra oficina parroquial para inscribirte."
+    }
+  },
+  "contact": {
+    "address": "21 Barton Street West, Hamilton, Ontario  L8L 1A2",
+    "phone": "(905) 528-1513",
+    "email": "allsoulshamilton@hamiltondiocese.com",
+    "officeHoursLabel": "Horario de Oficina",
+    "officeHoursLines": [
+      "Lun, Mar, Jue y Vie: 10:00 AM – 4:00 PM",
+      "Cerrado Miércoles, Sábado y Domingo"
+    ],
+    "youtubeLabel": "Ver en YouTube",
+    "youtubeUrl": "https://www.youtube.com/channel/UCVWBAlRQpp45WnBzGUtwXSQ",
+    "addressLabel": "Dirección",
+    "contactLabel": "Contacto"
+  },
+  "sponsors": {
+    "title": "Apoyo Comunitario",
+    "subtitle": "Con el apoyo de nuestros socios comerciales locales",
+    "cta": "¿Quieres que tu negocio aparezca aquí?",
+    "ctaDescription": "Apoya nuestra parroquia y conecta con nuestra comunidad.",
+    "contactEmail": "allsoulshamilton@hamiltondiocese.com",
+    "list": [
+      { "name": "Bay Gardens Funeral Home",      "category": "Servicios Funerarios", "phone": "905-574-6405" },
+      { "name": "Dr. Carlana C. Midence, DDS",   "category": "Consultorio Dental",   "phone": "905-318-6045" },
+      { "name": "C&DC Home Health Care Centre",  "category": "Cuidado de Salud",     "phone": "" },
+      { "name": "Frisolanti Funeral Chapel",     "category": "Servicios Funerarios", "phone": "" },
+      { "name": "Ideal Kitchen Inc.",            "category": "Cocinas y Hogar",      "phone": "" },
+      { "name": "Exquisite Limo",               "category": "Transporte",           "phone": "" },
+      { "name": "Vince Paparo's Entertainment", "category": "Entretenimiento",      "phone": "905-357-0663" },
+      { "name": "Knights of Columbus",          "category": "Comunidad",            "phone": "" },
+      { "name": "Marchese",                     "category": "Negocios",             "phone": "" }
+    ]
+  },
+  "footer": {
+    "copyright": "© Parroquia Nuestra Señora de Todas las Almas. Todos los derechos reservados.",
+    "lastUpdated": "Última actualización: 5 de junio de 2026",
+    "diocese": "Diócesis de Hamilton"
+  }
+}
