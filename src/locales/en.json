@@ -1,0 +1,98 @@
+{
+  "site": {
+    "name": "Our Lady of All Souls Parish",
+    "shortName": "All Souls Parish",
+    "location": "Hamilton, Ontario"
+  },
+  "nav": {
+    "schedule": "Mass Schedule",
+    "bulletin": "Weekly Bulletin",
+    "sacraments": "Sacraments",
+    "donate": "Donate",
+    "menuLabel": "Open menu",
+    "languages": { "en": "EN", "es": "ES", "it": "IT" }
+  },
+  "hero": {
+    "welcome": "Welcome to Our Parish",
+    "subtitle": "A community of faith, hope, and love in the heart of Hamilton.",
+    "cta": {
+      "schedule": "Mass Schedule",
+      "bulletin": "Weekly Bulletin",
+      "sacraments": "Sacraments"
+    }
+  },
+  "schedule": {
+    "title": "Mass Schedule",
+    "subtitle": "All are welcome to join us for the celebration of the Eucharist.",
+    "headers": {
+      "day": "Day",
+      "time": "Time",
+      "language": "Language",
+      "notes": "Notes"
+    },
+    "masses": [
+      { "day": "Monday – Friday", "time": "9:00 AM",  "language": "English", "notes": "" },
+      { "day": "Saturday",        "time": "9:00 AM",  "language": "English", "notes": "" },
+      { "day": "Saturday",        "time": "5:00 PM",  "language": "English", "notes": "Vigil Mass" },
+      { "day": "Sunday",          "time": "8:00 AM",  "language": "English", "notes": "" },
+      { "day": "Sunday",          "time": "10:00 AM", "language": "Spanish", "notes": "" },
+      { "day": "Sunday",          "time": "12:00 PM", "language": "Italian", "notes": "" },
+      { "day": "Sunday",          "time": "5:00 PM",  "language": "English", "notes": "" }
+    ]
+  },
+  "donations": {
+    "title": "Support Our Parish",
+    "subtitle": "Your generosity sustains our community and the ministries we share.",
+    "interac": {
+      "title": "Interac e-Transfer",
+      "description": "Send your donation securely to:",
+      "email": "allsoulshamilton@hamiltondiocese.com",
+      "instructions": "No security question required — your donation arrives automatically."
+    },
+    "envelope": {
+      "title": "Weekly Offering Envelope",
+      "description": "Pick up your envelope package at the parish office or after any Sunday Mass."
+    },
+    "preauthorized": {
+      "title": "Pre-Authorized Monthly Giving",
+      "description": "Set up automatic monthly contributions. Contact our parish office to enroll."
+    }
+  },
+  "contact": {
+    "address": "21 Barton Street West, Hamilton, Ontario  L8L 1A2",
+    "phone": "(905) 528-1513",
+    "email": "allsoulshamilton@hamiltondiocese.com",
+    "officeHoursLabel": "Office Hours",
+    "officeHoursLines": [
+      "Mon, Tue, Thu & Fri: 10:00 AM – 4:00 PM",
+      "Closed Wednesday, Saturday & Sunday"
+    ],
+    "youtubeLabel": "Watch on YouTube",
+    "youtubeUrl": "https://www.youtube.com/channel/UCVWBAlRQpp45WnBzGUtwXSQ",
+    "addressLabel": "Address",
+    "contactLabel": "Contact"
+  },
+  "sponsors": {
+    "title": "Community Support",
+    "subtitle": "Proudly supported by our local business partners",
+    "cta": "Want your business featured here?",
+    "ctaDescription": "Support our parish and connect with our community.",
+    "contactEmail": "allsoulshamilton@hamiltondiocese.com",
+    "list": [
+      { "name": "Bay Gardens Funeral Home",      "category": "Funeral Services",  "phone": "905-574-6405" },
+      { "name": "Dr. Carlana C. Midence, DDS",   "category": "Dental Office",     "phone": "905-318-6045" },
+      { "name": "C&DC Home Health Care Centre",  "category": "Health Care",       "phone": "" },
+      { "name": "Frisolanti Funeral Chapel",     "category": "Funeral Services",  "phone": "" },
+      { "name": "Ideal Kitchen Inc.",            "category": "Kitchen & Home",    "phone": "" },
+      { "name": "Exquisite Limo",               "category": "Transportation",    "phone": "" },
+      { "name": "Vince Paparo's Entertainment", "category": "Entertainment",     "phone": "905-357-0663" },
+      { "name": "Knights of Columbus",          "category": "Community",         "phone": "" },
+      { "name": "Marchese",                     "category": "Business",          "phone": "" }
+    ]
+  },
+  "footer": {
+    "copyright": "© Our Lady of All Souls Parish. All rights reserved.",
+    "lastUpdated": "Last updated: June 5, 2026",
+    "diocese": "Diocese of Hamilton"
+  }
+}
