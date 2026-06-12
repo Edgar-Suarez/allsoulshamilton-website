@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useLanguage } from '@/shared/contexts/language-context'
 import type { Language } from '@/features/parish/types'
 
@@ -23,8 +24,16 @@ export function Navbar() {
 
           {/* Logo + Parish Name */}
           <a href="/" className="flex items-center gap-3 group min-h-0 py-0">
-            <CrossIcon className="w-9 h-9 text-parish-gold flex-shrink-0
-                                  group-hover:text-parish-gold-light transition-colors" />
+            <div className="relative w-10 h-10 flex-shrink-0 rounded-full overflow-hidden border-2 border-parish-gold/50
+                            group-hover:border-parish-gold transition-colors">
+              <Image
+                src="/images/church-logo.jpg"
+                alt="Our Lady of All Souls Parish crest"
+                fill
+                className="object-cover object-center"
+                sizes="40px"
+              />
+            </div>
             <div className="leading-tight">
               <p className="text-white font-serif font-bold text-senior-lg leading-snug
                             group-hover:text-parish-gold-light transition-colors">

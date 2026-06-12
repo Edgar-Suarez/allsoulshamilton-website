@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { useState, useEffect, useCallback } from 'react'
 import { useLanguage } from '@/shared/contexts/language-context'
 
 /* ─── Church gallery strip ─────────────────────────────────────────────────── */
@@ -9,10 +10,11 @@ function ChurchGallery() {
     { src: '/images/church-building.jpg',  alt: 'Our Lady of All Souls Parish — exterior' },
     { src: '/images/ceiling-mural.jpg',    alt: 'Ceiling mural — Our Lady of All Souls' },
     { src: '/images/altar-interior.jpg',   alt: 'Church interior — altar and murals' },
+    { src: '/images/church-vertical.jpg',  alt: 'Our Lady of All Souls Parish' },
   ]
 
   return (
-    <div className="grid grid-cols-3 gap-1 overflow-hidden rounded-parish mb-12 shadow-md">
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-1 overflow-hidden rounded-parish mb-12 shadow-md">
       {photos.map(({ src, alt }) => (
         <div key={src} className="relative h-44 sm:h-56 overflow-hidden">
           <Image
@@ -20,7 +22,7 @@ function ChurchGallery() {
             alt={alt}
             fill
             className="object-cover object-center hover:scale-105 transition-transform duration-500"
-            sizes="(max-width: 768px) 33vw, 25vw"
+            sizes="(max-width: 640px) 50vw, 25vw"
           />
         </div>
       ))}
@@ -50,6 +52,140 @@ function SponsorCard({ name, category, phone }: SponsorCardProps) {
         </a>
       )}
     </div>
+  )
+}
+
+/* ─── Bulletin carousel ─────────────────────────────────────────────────────── */
+const BULLETINS = [
+  { src: '/images/bulletin-1.jpg', label: 'Weekly bulletin — page 1' },
+  { src: '/images/bulletin-2.jpg', label: 'Weekly bulletin — page 2' },
+]
+
+function BulletinSection({ youtubeUrl }: { youtubeUrl: string }) {
+  const [current, setCurrent] = useState(0)
+  const [paused,  setPaused]  = useState(false)
+
+  const next = useCallback(() => setCurrent(c => (c + 1) % BULLETINS.length), [])
+  const prev = useCallback(() => setCurrent(c => (c - 1 + BULLETINS.length) % BULLETINS.length), [])
+
+  useEffect(() => {
+    if (paused) return
+    const id = setInterval(next, 6000)
+    return () => clearInterval(id)
+  }, [paused, next])
+
+  return (
+    <section id="bulletin" className="bg-parish-navy py-14 sm:py-20">
+
+      {/* Header */}
+      <div className="text-center mb-10 px-4">
+        <span className="block text-parish-gold text-5xl mb-4 select-none" aria-hidden="true">✝</span>
+        <h2 className="font-serif font-bold text-white" style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)' }}>
+          Weekly Bulletin
+        </h2>
+        <p className="text-white/70 mt-2 text-senior-base">
+          Distributed after Sunday Masses &middot;{' '}
+          <a href={youtubeUrl} target="_blank" rel="noopener noreferrer"
+             className="text-parish-gold font-semibold hover:underline">
+            Watch on YouTube
+          </a>
+        </p>
+      </div>
+
+      {/* Carousel wrapper */}
+      <div
+        className="select-none px-4 sm:px-8"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      >
+        {/* Inner: centered, takes up most of the viewport width */}
+        <div className="relative max-w-4xl mx-auto">
+
+          {/* Slides — stacked, only current is visible */}
+          <div className="relative">
+            {BULLETINS.map(({ src, label }, i) => (
+              <div
+                key={src}
+                className="transition-opacity duration-700"
+                style={{
+                  opacity:       i === current ? 1 : 0,
+                  pointerEvents: i === current ? 'auto' : 'none',
+                  position:      i === current ? 'relative' : 'absolute',
+                  inset:         i === current ? 'auto' : 0,
+                }}
+              >
+                {/* Aspect-ratio box: height follows width (portrait page ratio) */}
+                <div className="relative w-full rounded-sm overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)]"
+                     style={{ aspectRatio: '1000 / 1294' }}>
+                  <Image
+                    src={src}
+                    alt={label}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 95vw, (max-width: 1280px) 85vw, 896px"
+                    priority={i === 0}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Arrow — left, overlapping the image edge */}
+          <button
+            onClick={prev}
+            aria-label="Previous bulletin page"
+            className="absolute -left-5 top-1/3 -translate-y-1/2 z-10
+                       w-12 h-12 rounded-full bg-parish-navy/80 backdrop-blur-sm
+                       border border-white/20 flex items-center justify-center text-white
+                       hover:bg-parish-gold hover:border-parish-gold transition-all duration-150
+                       shadow-lg"
+          >
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          {/* Arrow — right, overlapping the image edge */}
+          <button
+            onClick={next}
+            aria-label="Next bulletin page"
+            className="absolute -right-5 top-1/3 -translate-y-1/2 z-10
+                       w-12 h-12 rounded-full bg-parish-navy/80 backdrop-blur-sm
+                       border border-white/20 flex items-center justify-center text-white
+                       hover:bg-parish-gold hover:border-parish-gold transition-all duration-150
+                       shadow-lg"
+          >
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          {/* Counter pill — top-right of image */}
+          <div className="absolute top-3 right-3 z-10 bg-black/50 text-white text-sm
+                          font-medium px-3 py-1 rounded-full backdrop-blur-sm">
+            {current + 1} / {BULLETINS.length}
+          </div>
+
+        </div>
+      </div>
+
+      {/* Dot indicators */}
+      <div className="flex justify-center gap-3 mt-8">
+        {BULLETINS.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            aria-label={`Bulletin page ${i + 1}`}
+            className={`rounded-full transition-all duration-300
+              ${i === current
+                ? 'w-8 h-3 bg-parish-gold'
+                : 'w-3 h-3 bg-white/30 hover:bg-white/60'
+              }`}
+          />
+        ))}
+      </div>
+
+    </section>
   )
 }
 
@@ -134,17 +270,32 @@ export function SponsorsFooter() {
   return (
     <footer>
 
-      {/* ── Sponsors Section ────────────────────────────────────────────── */}
-      <section id="sacraments" className="py-16 sm:py-24 bg-parish-cream">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+      {/* ── Weekly Bulletin ──────────────────────────────────────────────── */}
+      <BulletinSection youtubeUrl={t.contact.youtubeUrl} />
 
-          {/* Church photo gallery */}
-          <ChurchGallery />
+      {/* ── Sponsors Section ────────────────────────────────────────────── */}
+      <section id="sponsors" className="py-16 sm:py-24 bg-parish-cream">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
 
           {/* Section header */}
           <div className="text-center mb-10">
             <h2 className="section-title">{sponsors.title}</h2>
             <p className="section-subtitle">{sponsors.subtitle}</p>
+          </div>
+
+          {/* Sponsors ads image — B&W bulletin sponsors page, same size as bulletin carousel */}
+          <div className="px-4 sm:px-8 mb-10">
+            <div className="relative w-full max-w-4xl mx-auto rounded-parish overflow-hidden
+                            shadow-[0_20px_60px_rgba(0,0,0,0.15)]"
+                 style={{ aspectRatio: '1100 / 1485' }}>
+              <Image
+                src="/images/sponsors-ads.jpg"
+                alt="Parish bulletin sponsors and local business advertisements"
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 95vw, (max-width: 1280px) 85vw, 896px"
+              />
+            </div>
           </div>
 
           {/* Sponsor grid */}

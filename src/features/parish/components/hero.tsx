@@ -76,7 +76,9 @@ export function Hero() {
 
           {/* Secondary — white bg: 10.5:1 contrast with navy ✓ */}
           <a
-            href="#bulletin"
+            href="https://www.youtube.com/channel/UCVWBAlRQpp45WnBzGUtwXSQ"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center justify-center w-full sm:w-auto
                        px-8 rounded-parish font-bold text-parish-navy bg-white shadow-lg
                        hover:bg-gray-100 active:scale-95

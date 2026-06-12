@@ -31,14 +31,44 @@
       "notes": "Notes"
     },
     "masses": [
-      { "day": "Monday – Friday", "time": "9:00 AM",  "language": "English", "notes": "" },
-      { "day": "Saturday",        "time": "9:00 AM",  "language": "English", "notes": "" },
-      { "day": "Saturday",        "time": "5:00 PM",  "language": "English", "notes": "Vigil Mass" },
-      { "day": "Sunday",          "time": "8:00 AM",  "language": "English", "notes": "" },
-      { "day": "Sunday",          "time": "10:00 AM", "language": "Spanish", "notes": "" },
-      { "day": "Sunday",          "time": "12:00 PM", "language": "Italian", "notes": "" },
-      { "day": "Sunday",          "time": "5:00 PM",  "language": "English", "notes": "" }
+      { "day": "Tuesday & Thursday", "time": "7:00 PM",  "language": "English", "notes": "" },
+      { "day": "Wednesday & Friday", "time": "9:00 AM",  "language": "English", "notes": "" },
+      { "day": "Saturday",           "time": "6:00 PM",  "language": "Spanish", "notes": "Vigil Mass" },
+      { "day": "Sunday",             "time": "9:00 AM",  "language": "Italian", "notes": "" },
+      { "day": "Sunday",             "time": "10:30 AM", "language": "English", "notes": "" },
+      { "day": "Sunday",             "time": "12:00 PM", "language": "Spanish", "notes": "" }
     ]
+  },
+  "sacraments": {
+    "title": "Sacraments & Pastoral Services",
+    "subtitle": "We accompany you in the key moments of your faith journey.",
+    "items": [
+      {
+        "id": "confessions",
+        "title": "Confessions",
+        "schedule": "Saturdays at 4:30 PM",
+        "details": "Also available by appointment. Please contact the parish office."
+      },
+      {
+        "id": "baptism",
+        "title": "Baptism",
+        "schedule": "Fourth Sunday of each month",
+        "details": "Registration required at least one month in advance. Available in English and Spanish."
+      },
+      {
+        "id": "marriage",
+        "title": "Marriage",
+        "schedule": "One year advance notice required",
+        "details": "A marriage preparation course is mandatory. Contact the parish office to begin the process."
+      },
+      {
+        "id": "sickVisits",
+        "title": "Sick Visits & Holy Communion",
+        "schedule": "Monthly",
+        "details": "Our ministers bring Holy Communion to the sick and homebound. Contact the parish office to arrange a visit."
+      }
+    ],
+    "contactNote": "For more information on any sacrament, please contact our parish office at (905) 528-1513."
   },
   "donations": {
     "title": "Support Our Parish",

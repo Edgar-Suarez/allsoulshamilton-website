@@ -31,14 +31,44 @@
       "notes": "Notas"
     },
     "masses": [
-      { "day": "Lunes – Viernes", "time": "9:00 AM",  "language": "Inglés",   "notes": "" },
-      { "day": "Sábado",          "time": "9:00 AM",  "language": "Inglés",   "notes": "" },
-      { "day": "Sábado",          "time": "5:00 PM",  "language": "Inglés",   "notes": "Misa de Vigilia" },
-      { "day": "Domingo",         "time": "8:00 AM",  "language": "Inglés",   "notes": "" },
-      { "day": "Domingo",         "time": "10:00 AM", "language": "Español",  "notes": "" },
-      { "day": "Domingo",         "time": "12:00 PM", "language": "Italiano", "notes": "" },
-      { "day": "Domingo",         "time": "5:00 PM",  "language": "Inglés",   "notes": "" }
+      { "day": "Martes y Jueves",     "time": "7:00 PM",  "language": "Inglés",   "notes": "" },
+      { "day": "Miércoles y Viernes", "time": "9:00 AM",  "language": "Inglés",   "notes": "" },
+      { "day": "Sábado",              "time": "6:00 PM",  "language": "Español",  "notes": "Misa de Vigilia" },
+      { "day": "Domingo",             "time": "9:00 AM",  "language": "Italiano", "notes": "" },
+      { "day": "Domingo",             "time": "10:30 AM", "language": "Inglés",   "notes": "" },
+      { "day": "Domingo",             "time": "12:00 PM", "language": "Español",  "notes": "" }
     ]
+  },
+  "sacraments": {
+    "title": "Sacramentos y Servicios Pastorales",
+    "subtitle": "Te acompañamos en los momentos clave de tu camino de fe.",
+    "items": [
+      {
+        "id": "confessions",
+        "title": "Confesiones",
+        "schedule": "Sábados a las 4:30 PM",
+        "details": "También disponible con cita previa. Comunícate con la oficina parroquial."
+      },
+      {
+        "id": "baptism",
+        "title": "Bautismo",
+        "schedule": "Cuarto domingo de cada mes",
+        "details": "Se requiere inscripción con al menos un mes de anticipación. Disponible en inglés y español."
+      },
+      {
+        "id": "marriage",
+        "title": "Matrimonio",
+        "schedule": "Se requiere aviso con un año de anticipación",
+        "details": "El curso de preparación matrimonial es obligatorio. Contacta la oficina parroquial para iniciar el proceso."
+      },
+      {
+        "id": "sickVisits",
+        "title": "Visitas a Enfermos y Santa Comunión",
+        "schedule": "Mensual",
+        "details": "Nuestros ministros llevan la Santa Comunión a los enfermos y confinados. Contacta la oficina parroquial para organizar una visita."
+      }
+    ],
+    "contactNote": "Para más información sobre cualquier sacramento, comunícate con nuestra oficina parroquial al (905) 528-1513."
   },
   "donations": {
     "title": "Apoya Nuestra Parroquia",

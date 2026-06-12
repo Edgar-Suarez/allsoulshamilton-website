@@ -13,6 +13,13 @@ export interface SponsorEntry {
   phone: string
 }
 
+export interface SacramentItem {
+  id: string
+  title: string
+  schedule: string
+  details: string
+}
+
 export interface Translations {
   site: {
     name: string
@@ -37,6 +44,12 @@ export interface Translations {
     subtitle: string
     headers: { day: string; time: string; language: string; notes: string }
     masses: MassEntry[]
+  }
+  sacraments: {
+    title: string
+    subtitle: string
+    items: SacramentItem[]
+    contactNote: string
   }
   donations: {
     title: string
