@@ -124,5 +124,20 @@
     "copyright": "© Our Lady of All Souls Parish. All rights reserved.",
     "lastUpdated": "Last updated: June 5, 2026",
     "diocese": "Diocese of Hamilton"
+  },
+  "auth": {
+    "loginTitle": "Parish Access",
+    "loginSubtitle": "For parish staff only",
+    "emailLabel": "Email address",
+    "passwordLabel": "Password",
+    "signIn": "Sign in",
+    "signingIn": "Signing in…",
+    "errorInvalidCredentials": "Incorrect email or password. Please try again.",
+    "errorGeneric": "Could not sign in. Check your connection and try again.",
+    "errorEmailInvalid": "Please enter a valid email address.",
+    "errorPasswordRequired": "Please enter your password.",
+    "padreGreeting": "Welcome, Father",
+    "padreComingSoon": "Here you will be able to record the sermon, the daily quote, and announcements. Coming soon.",
+    "signOut": "Sign out"
   }
 }

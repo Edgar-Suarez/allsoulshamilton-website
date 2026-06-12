@@ -82,4 +82,19 @@ export interface Translations {
     lastUpdated: string
     diocese: string
   }
+  auth: {
+    loginTitle: string
+    loginSubtitle: string
+    emailLabel: string
+    passwordLabel: string
+    signIn: string
+    signingIn: string
+    errorInvalidCredentials: string
+    errorGeneric: string
+    errorEmailInvalid: string
+    errorPasswordRequired: string
+    padreGreeting: string
+    padreComingSoon: string
+    signOut: string
+  }
 }

@@ -124,5 +124,20 @@
     "copyright": "© Parrocchia Nostra Signora di Tutte le Anime. Tutti i diritti riservati.",
     "lastUpdated": "Ultimo aggiornamento: 5 giugno 2026",
     "diocese": "Diocesi di Hamilton"
+  },
+  "auth": {
+    "loginTitle": "Accesso parrocchiale",
+    "loginSubtitle": "Solo per il personale della parrocchia",
+    "emailLabel": "Indirizzo email",
+    "passwordLabel": "Password",
+    "signIn": "Accedi",
+    "signingIn": "Accesso in corso…",
+    "errorInvalidCredentials": "Email o password errati. Riprovi.",
+    "errorGeneric": "Impossibile accedere. Controlli la connessione e riprovi.",
+    "errorEmailInvalid": "Inserisca un indirizzo email valido.",
+    "errorPasswordRequired": "Inserisca la password.",
+    "padreGreeting": "Benvenuto, Padre",
+    "padreComingSoon": "Qui potrà registrare l'omelia, la frase del giorno e gli avvisi. Presto disponibile.",
+    "signOut": "Esci"
   }
 }

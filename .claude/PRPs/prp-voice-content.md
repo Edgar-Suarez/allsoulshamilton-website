@@ -1,6 +1,6 @@
 # PRP-001: Sistema de Gestión de Contenidos por Voz (Voice CMS)
 
-> **Estado**: APROBADO — EN EJECUCIÓN (Fase 1)
+> **Estado**: APROBADO — EN EJECUCIÓN (Fase 2 código ✅ · Fase 1 SQL ejecutar manual)
 > **Fecha**: 2026-06-12
 > **Aprobado**: 2026-06-12 — PWA `/padre`, paso de confirmación y Supabase aprobados tal cual
 > **Proyecto**: Our Lady of All Souls Parish (allsoulshamilton.com)
@@ -165,7 +165,15 @@ CREATE POLICY "authenticated_update" ON parish_content
 
 > Esta sección CRECE con cada error encontrado durante la implementación.
 
-*(vacío — se llena durante la implementación)*
+### 2026-06-12: Next.js 16 usa `proxy.ts` en lugar de `middleware.ts`
+- **Error**: Docs de Supabase + ejemplos usan `middleware.ts` (deprecated). Next 16.2+ lo cambió a `proxy.ts`.
+- **Fix**: `src/proxy.ts` con `export async function proxy(request)` — mismo patrón `@supabase/ssr`, solo cambia el nombre de archivo y función. Build lo registra como "ƒ Proxy (Middleware)".
+- **Aplicar en**: Cualquier Next 16+ con auth Supabase.
+
+### 2026-06-12: `CookieOptions` de `@supabase/ssr` debe importarse explícitamente para TypeScript
+- **Error**: `npx tsc --noEmit` falla con TS7006/TS7031 en el callback `setAll()` del proxy (implicit any).
+- **Fix**: `setAll(cookiesToSet: { name: string; value: string; options: CookieOptions }[])` — importar `type CookieOptions from '@supabase/ssr'`.
+- **Aplicar en**: Todo cliente SSR nuevo (server.ts, proxy.ts, route handlers).
 
 ---
 

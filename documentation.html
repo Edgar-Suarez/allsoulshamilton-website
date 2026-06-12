@@ -30,7 +30,7 @@
         <span class="bg-white/10 rounded-full px-3 py-1">Supabase</span>
         <span class="bg-white/10 rounded-full px-3 py-1">OpenAI Whisper</span>
         <span class="bg-white/10 rounded-full px-3 py-1">Vercel</span>
-        <span class="bg-amber-500 text-stone-900 font-semibold rounded-full px-3 py-1">Última actualización: 2026-06-12 · Fase 1</span>
+        <span class="bg-amber-500 text-stone-900 font-semibold rounded-full px-3 py-1">Última actualización: 2026-06-12 · Fase 2</span>
       </div>
     </div>
   </header>
@@ -46,10 +46,10 @@
       <div class="mb-6">
         <div class="flex justify-between text-sm mb-1">
           <span class="font-medium">Progreso global</span>
-          <span class="text-stone-500">Fase 1 de 6</span>
+          <span class="text-stone-500">Fase 2 de 6</span>
         </div>
         <div class="w-full bg-stone-200 rounded-full h-3">
-          <div class="bg-amber-500 h-3 rounded-full" style="width: 16%"></div>
+          <div class="bg-amber-500 h-3 rounded-full" style="width: 33%"></div>
         </div>
       </div>
 
@@ -63,15 +63,15 @@
             </tr>
           </thead>
           <tbody class="divide-y divide-stone-100">
-            <tr class="bg-amber-50/60">
+            <tr>
               <td class="px-4 py-3 font-semibold">1 · Infraestructura Supabase</td>
               <td class="px-4 py-3">Tabla <code class="bg-stone-100 px-1 rounded">parish_content</code>, políticas RLS, índice, usuario del párroco</td>
-              <td class="px-4 py-3"><span class="inline-flex items-center gap-1 bg-amber-100 text-amber-800 rounded-full px-2.5 py-0.5 font-medium">🔨 En curso — SQL listo, falta ejecutarlo en Supabase</span></td>
+              <td class="px-4 py-3"><span class="inline-flex items-center gap-1 bg-amber-100 text-amber-800 rounded-full px-2.5 py-0.5 font-medium">🔨 SQL listo — falta ejecutarlo en Supabase (paso manual)</span></td>
             </tr>
-            <tr>
+            <tr class="bg-amber-50/60">
               <td class="px-4 py-3 font-semibold">2 · Login funcional</td>
               <td class="px-4 py-3">Email/password real, sesión persistente, ruta <code class="bg-stone-100 px-1 rounded">/padre</code> protegida</td>
-              <td class="px-4 py-3"><span class="bg-stone-100 text-stone-500 rounded-full px-2.5 py-0.5">⏳ Pendiente</span></td>
+              <td class="px-4 py-3"><span class="inline-flex items-center gap-1 bg-emerald-100 text-emerald-800 rounded-full px-2.5 py-0.5 font-medium">✅ Código completo — prueba en vivo espera conexión a Supabase</span></td>
             </tr>
             <tr>
               <td class="px-4 py-3 font-semibold">3 · API de transcripción</td>
@@ -270,6 +270,69 @@ flowchart TD
       </div>
     </section>
 
+    <!-- ======================= FASE 2: LOGIN ======================= -->
+    <section>
+      <h2 class="text-2xl font-bold text-[#1B3A5C] mb-1">🔓 Fase 2 — Login y protección de <code>/padre</code></h2>
+      <p class="text-stone-500 mb-6">
+        El párroco entra una sola vez con email y contraseña; la sesión queda guardada en cookies y persiste
+        entre visitas. Nadie sin sesión puede ver <code>/padre</code>, y no existe registro público.
+      </p>
+
+      <div class="bg-white rounded-xl border border-stone-200 shadow-sm p-6 mb-6">
+        <pre class="mermaid">
+flowchart TD
+    V["📱 Visita /padre"] --> P{"proxy.ts<br/>¿hay sesión válida?"}
+    P -->|"No"| L["Redirige a /login"]
+    P -->|"Sí"| PA["Pantalla del párroco<br/>(re-valida sesión: defensa en profundidad)"]
+
+    L --> F["Formulario senior-friendly<br/>texto grande · botones ≥ 56px"]
+    F -->|"email + contraseña<br/>(validados con Zod)"| SA["Supabase Auth<br/>signInWithPassword"]
+    SA -->|"❌ credenciales malas"| E["Mensaje claro en su idioma<br/>(ES / EN / IT)"]
+    E --> F
+    SA -->|"✅ sesión en cookies"| PA
+
+    S["📝 Visita /signup"] -->|"registro público cerrado"| L
+
+    style PA fill:#dcfce7,stroke:#16a34a
+    style SA fill:#dcfce7,stroke:#16a34a
+        </pre>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-4 text-sm">
+        <div class="bg-white rounded-xl border border-stone-200 p-4 shadow-sm">
+          <p class="font-semibold mb-1">🔄 Sesión que se renueva sola</p>
+          <p class="text-stone-600"><code>src/proxy.ts</code> (el "middleware" de Next.js 16) refresca el token de Supabase en cada visita a <code>/padre</code> y <code>/login</code>. El párroco no vuelve a teclear su contraseña.</p>
+        </div>
+        <div class="bg-white rounded-xl border border-stone-200 p-4 shadow-sm">
+          <p class="font-semibold mb-1">🛡️ Doble candado</p>
+          <p class="text-stone-600">El proxy redirige sin sesión, y además la propia página <code>/padre</code> re-verifica al usuario en el servidor. Si una capa falla, la otra protege.</p>
+        </div>
+        <div class="bg-white rounded-xl border border-stone-200 p-4 shadow-sm">
+          <p class="font-semibold mb-1">🌐 Trilingüe y senior-friendly</p>
+          <p class="text-stone-600">Todos los textos del login viven en los 3 locales (ES/EN/IT). Tipografía <code>text-senior-*</code>, contraste alto y zonas táctiles de 56px.</p>
+        </div>
+      </div>
+
+      <div class="mt-6 overflow-x-auto rounded-xl border border-stone-200 bg-white shadow-sm">
+        <table class="w-full text-sm">
+          <thead class="bg-stone-50 text-left text-stone-600">
+            <tr>
+              <th class="px-4 py-3">Archivo</th>
+              <th class="px-4 py-3">Responsabilidad</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-stone-100">
+            <tr><td class="px-4 py-2.5 font-mono text-xs">src/proxy.ts</td><td class="px-4 py-2.5 text-stone-600">Refresh de sesión + guard de <code>/padre</code> (patrón oficial <code>@supabase/ssr</code>)</td></tr>
+            <tr><td class="px-4 py-2.5 font-mono text-xs">src/features/auth/services/auth.ts</td><td class="px-4 py-2.5 text-stone-600"><code>signIn</code> / <code>signOut</code> contra Supabase Auth</td></tr>
+            <tr><td class="px-4 py-2.5 font-mono text-xs">src/features/auth/components/login-form.tsx</td><td class="px-4 py-2.5 text-stone-600">Formulario con validación Zod y errores traducidos</td></tr>
+            <tr><td class="px-4 py-2.5 font-mono text-xs">src/app/(auth)/login/page.tsx</td><td class="px-4 py-2.5 text-stone-600">Página de login; con sesión activa redirige a <code>/padre</code></td></tr>
+            <tr><td class="px-4 py-2.5 font-mono text-xs">src/app/(auth)/signup/page.tsx</td><td class="px-4 py-2.5 text-stone-600">Registro cerrado: redirige a <code>/login</code></td></tr>
+            <tr><td class="px-4 py-2.5 font-mono text-xs">src/app/padre/page.tsx</td><td class="px-4 py-2.5 text-stone-600">Pantalla protegida del párroco (placeholder hasta Fase 4) + cerrar sesión</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <!-- ======================= VARIABLES DE ENTORNO ======================= -->
     <section>
       <h2 class="text-2xl font-bold text-[#1B3A5C] mb-1">🔑 Variables de entorno</h2>
@@ -321,6 +384,18 @@ flowchart TD
       <p class="text-stone-500 mb-6">Historial de esta documentación, fase por fase.</p>
 
       <div class="space-y-3">
+        <div class="bg-white rounded-xl border border-stone-200 shadow-sm p-4 flex gap-4 items-start">
+          <span class="bg-emerald-600 text-white text-xs font-bold rounded-full px-2.5 py-1 mt-0.5 whitespace-nowrap">Fase 2</span>
+          <div class="text-sm">
+            <p class="font-semibold">2026-06-12 — Login funcional y ruta protegida</p>
+            <ul class="list-disc ml-5 mt-1 text-stone-600 space-y-0.5">
+              <li>Login real con Supabase Auth (email/password), validación Zod y errores traducidos (ES/EN/IT).</li>
+              <li><code>src/proxy.ts</code> (Next.js 16): refresh automático de sesión y protección de <code>/padre</code>.</li>
+              <li>Página <code>/padre</code> creada (protegida, con cierre de sesión); <code>/signup</code> cerrado → redirige a login.</li>
+              <li><code>npx tsc --noEmit</code> y <code>npm run build</code> en verde. La prueba de login en vivo queda pendiente de ejecutar la Fase 1 manual (SQL + <code>.env.local</code>).</li>
+            </ul>
+          </div>
+        </div>
         <div class="bg-white rounded-xl border border-stone-200 shadow-sm p-4 flex gap-4 items-start">
           <span class="bg-amber-500 text-white text-xs font-bold rounded-full px-2.5 py-1 mt-0.5 whitespace-nowrap">Fase 1</span>
           <div class="text-sm">

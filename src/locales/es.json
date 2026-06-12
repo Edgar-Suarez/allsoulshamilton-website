@@ -124,5 +124,20 @@
     "copyright": "© Parroquia Nuestra Señora de Todas las Almas. Todos los derechos reservados.",
     "lastUpdated": "Última actualización: 5 de junio de 2026",
     "diocese": "Diócesis de Hamilton"
+  },
+  "auth": {
+    "loginTitle": "Acceso parroquial",
+    "loginSubtitle": "Solo para el personal de la parroquia",
+    "emailLabel": "Correo electrónico",
+    "passwordLabel": "Contraseña",
+    "signIn": "Entrar",
+    "signingIn": "Entrando…",
+    "errorInvalidCredentials": "Correo o contraseña incorrectos. Intente de nuevo.",
+    "errorGeneric": "No se pudo iniciar sesión. Revise su conexión e intente de nuevo.",
+    "errorEmailInvalid": "Escriba un correo electrónico válido.",
+    "errorPasswordRequired": "Escriba su contraseña.",
+    "padreGreeting": "Bienvenido, Padre",
+    "padreComingSoon": "Aquí podrá grabar el sermón, la frase del día y los avisos. Muy pronto.",
+    "signOut": "Cerrar sesión"
   }
 }
