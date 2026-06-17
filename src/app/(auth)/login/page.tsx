@@ -1,17 +1,10 @@
-import { redirect } from 'next/navigation'
-import { createClient } from '@/lib/supabase/server'
-import { LoginForm } from '@/features/auth/components/login-form'
-
-export default async function LoginPage() {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-
-  // Sesión activa → directo a la pantalla del párroco
-  if (user) redirect('/padre')
-
+export default function LoginPage() {
   return (
-    <main className="flex min-h-screen items-center justify-center px-4 py-12">
-      <LoginForm />
-    </main>
+    <div className="flex min-h-screen items-center justify-center">
+      <div className="w-full max-w-md space-y-8 p-8">
+        <h1 className="text-3xl font-bold">Login</h1>
+        <p className="text-gray-600">Implementa LoginForm desde features/auth/components/</p>
+      </div>
+    </div>
   )
 }

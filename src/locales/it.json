@@ -7,7 +7,10 @@
   "nav": {
     "schedule": "Orari delle Messe",
     "bulletin": "Bollettino Settimanale",
+    "weeklySermon": "Omelia",
+    "dailyQuote": "Citazione del Giorno",
     "sacraments": "Sacramenti",
+    "announcements": "Avvisi",
     "donate": "Dona",
     "menuLabel": "Apri menu",
     "languages": { "en": "EN", "es": "ES", "it": "IT" }
@@ -139,5 +142,37 @@
     "padreGreeting": "Benvenuto, Padre",
     "padreComingSoon": "Qui potrà registrare l'omelia, la frase del giorno e gli avvisi. Presto disponibile.",
     "signOut": "Esci"
+  },
+  "voiceCms": {
+    "title": "Registra contenuto",
+    "subtitle": "Scegli cosa vorresti registrare",
+    "sermónLabel": "🎙 Omelia",
+    "frasaLabel": "✝ Frase del giorno",
+    "avisoLabel": "📢 Avviso",
+    "selectLabel": "Scegli cosa registrare:",
+    "startLabel": "🎙 Inizia a registrare",
+    "editLabel": "Modifica se necessario:",
+    "retryLabel": "🔄 Registra di nuovo",
+    "publishLabel": "✓ Pubblica",
+    "previewHint": "Rivedi il testo prima di pubblicare",
+    "backLabel": "← Indietro"
+  },
+  "weeklySermon": {
+    "title": "Omelia della Settimana",
+    "subtitle": "Riflessione del Padre",
+    "noContent": "Nessuna omelia registrata ancora. Torna presto.",
+    "posted": "Pubblicato"
+  },
+  "dailyQuote": {
+    "title": "Citazione del Giorno",
+    "subtitle": "Ispirazione spirituale",
+    "noContent": "Nessuna citazione per oggi. Torna presto.",
+    "posted": "Pubblicato"
+  },
+  "announcements": {
+    "title": "Avvisi Parrocchiali",
+    "subtitle": "Comunicati della comunità",
+    "noContent": "Nessun avviso per ora. Torna presto.",
+    "posted": "Pubblicato"
   }
 }

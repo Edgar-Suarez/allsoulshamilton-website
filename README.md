@@ -1,145 +1,170 @@
-# All Souls Parish — Website Content Guide
+# SaaS Factory V4
 
-This guide explains how to update the website content **without touching any code**.
-All texts, schedules, and sponsor listings live in three plain-text JSON files —
-one per language. Open the file, change the text, save.
+Template production-ready para crear aplicaciones SaaS con desarrollo asistido por IA. Filosofia Agent-First: el usuario dice que quiere, el agente construye todo.
 
----
+## Que incluye
 
-## Where the Content Files Are
+- Next.js 16 (App Router) + TypeScript
+- Supabase (Database + Auth + RLS)
+- Tailwind CSS + shadcn/ui
+- 19 Skills de Claude Code (V4 Skills 2.0)
+- Playwright CLI para QA automatizado
+- AI Templates (Vercel AI SDK v5 + OpenRouter)
+- 5 Design Systems listos para usar
+- Arquitectura Feature-First optimizada para IA
+- Auto-Blindaje: el sistema aprende de cada error
 
-```
-src/locales/
-├── en.json   ← English content
-├── es.json   ← Spanish / Español content
-└── it.json   ← Italian / Italiano content
-```
+## Quick Start
 
-Open any of these files in any text editor (Notepad, TextEdit, VS Code).
-
----
-
-## How to Update the Mass Schedule
-
-Open `src/locales/en.json` (repeat for `es.json` and `it.json`).
-
-Find the `"masses"` array:
-
-```json
-"masses": [
-  { "day": "Monday – Friday", "time": "9:00 AM",  "language": "English", "notes": "" },
-  { "day": "Saturday",        "time": "5:00 PM",  "language": "English", "notes": "Vigil Mass" },
-  { "day": "Sunday",          "time": "10:00 AM", "language": "Spanish", "notes": "" }
-]
-```
-
-- **Change a time:** Edit the `"time"` value (e.g. `"9:00 AM"` → `"9:30 AM"`)
-- **Add a Mass:** Copy any line, paste it, edit the values
-- **Remove a Mass:** Delete the entire `{ ... }` line
-
-> Keep `"time"` the same in all three language files.
-> Translate only `"day"`, `"language"`, and `"notes"`.
-
----
-
-## How to Update the Sponsors List
-
-Find `"sponsors"` → `"list"` in each JSON:
-
-```json
-"list": [
-  { "name": "Bay Gardens Funeral Home", "category": "Funeral Services", "phone": "905-574-6405" },
-  { "name": "Ideal Kitchen Inc.",       "category": "Kitchen & Home",   "phone": "" }
-]
-```
-
-- **Add:** Copy a line, paste at the end, fill in name / category / phone
-- **Remove:** Delete that line
-- Leave `"phone": ""` if there is no phone number
-
----
-
-## How to Update Contact Information
-
-Find `"contact"` in each JSON:
-
-```json
-"contact": {
-  "address":  "21 Barton Street West, Hamilton, Ontario  L8L 1A2",
-  "phone":    "(905) 528-1513",
-  "email":    "allsoulshamilton@hamiltondiocese.com",
-  "officeHoursLines": [
-    "Mon, Tue, Thu & Fri: 10:00 AM – 4:00 PM",
-    "Closed Wednesday, Saturday & Sunday"
-  ]
-}
-```
-
----
-
-## How to Update the "Last Updated" Date
-
-Find `"footer"` at the bottom of each JSON:
-
-```json
-"footer": {
-  "lastUpdated": "Last updated: June 5, 2026"
-}
-```
-
-Change the date whenever you publish new content. Update all three files.
-
----
-
-## How to Replace Church Photos
-
-Photos are stored in `public/images/`. Replace any file with a new image
-using the **exact same filename**:
-
-| File | Used in |
-|------|---------|
-| `church-exterior.jpg` | Hero background (congregation photo) |
-| `church-building.jpg` | Gallery — church exterior |
-| `ceiling-mural.jpg`   | Gallery — ceiling mural |
-| `altar-interior.jpg`  | Gallery — altar interior |
-
----
-
-## Running Locally
+### 1. Instalar
 
 ```bash
-npm install        # first time only
-npm run dev        # preview at http://localhost:3001
-npm run build      # check for errors before publishing
+npm install
 ```
 
----
-
-## Deploying to Production
+### 2. Variables de Entorno
 
 ```bash
-npx vercel --prod
+cp .env.example .env.local
+# Editar con credenciales de Supabase
 ```
 
-Or push to your GitHub repository — Vercel redeploys automatically on every push.
+### 3. MCPs (Opcional)
+
+```bash
+cp .claude/example.mcp.json .mcp.json
+# Editar con project ref de Supabase
+```
+
+### 4. Desarrollar
+
+```bash
+npm run dev
+# Auto-detecta puerto disponible (3000-3006)
+```
+
+## Tech Stack
+
+```yaml
+Runtime: Node.js + TypeScript
+Framework: Next.js 16 (App Router)
+Database: PostgreSQL/Supabase
+Styling: Tailwind CSS 3.4
+Components: shadcn/ui
+State: Zustand
+Validation: Zod
+AI Engine: Vercel AI SDK v5 + OpenRouter
+Testing: Playwright CLI + MCP
+Deploy: Vercel
+```
+
+## Arquitectura Feature-First
+
+```
+src/
+├── app/                      # Next.js App Router
+│   ├── (auth)/              # Rutas auth
+│   ├── (main)/              # Rutas principales
+│   └── layout.tsx
+│
+├── features/                 # Organizadas por funcionalidad
+│   └── [feature]/
+│       ├── components/
+│       ├── hooks/
+│       ├── services/
+│       ├── types/
+│       └── store/
+│
+└── shared/                   # Codigo reutilizable
+    ├── components/
+    ├── hooks/
+    ├── lib/
+    └── types/
+```
+
+## Skills (19 total)
+
+### Para el usuario
+
+| Skill | Que hace |
+|-------|----------|
+| `/new-app` | Entrevista de negocio → BUSINESS_LOGIC.md |
+| `/landing` | Landing page de alta conversion |
+| `/add-login` | Auth completo (Email + Google OAuth + profiles + RLS) |
+| `/bucle-agentico` | Implementar features complejas por fases |
+| `/sprint` | Tareas rapidas sin planificacion |
+| `/prp` | Planificar features complejas antes de implementar |
+| `/ai [template]` | Agregar IA: chat, RAG, vision, tools |
+| `/qa` | QA automatizado con Playwright CLI |
+| `/primer` | Inicializar contexto del proyecto |
+| `/update-sf` | Actualizar a ultima version |
+| `/eject-sf` | Remover SaaS Factory (destructivo) |
+| `/skill-creator` | Crear nuevos skills |
+
+### Automaticos (Claude los activa segun la tarea)
+
+backend, frontend, supabase-admin, codebase-analyst, vercel-deployer, documentacion, calidad
+
+## AI Templates
+
+Bloques LEGO para construir features de IA con Vercel AI SDK v5 + OpenRouter:
+
+| Template | Que hace |
+|----------|----------|
+| setup-base | Configuracion inicial |
+| chat | Chat streaming con useChat |
+| web-search | Busqueda con :online |
+| historial | Persistencia en Supabase |
+| vision | Analisis de imagenes |
+| tools | Funciones/herramientas |
+| rag | pgvector + embeddings |
+| single-call | generateText() puntual |
+| structured-outputs | generateObject() con Zod |
+| generative-ui | LLM decide que componente renderizar |
+
+## Design Systems
+
+5 sistemas visuales listos en `.claude/design-systems/`:
+
+- **Liquid Glass** - iOS-like, transparencias
+- **Gradient Mesh** - Degradados fluidos
+- **Neumorphism** - Soft UI, sombras suaves
+- **Bento Grid** - Grids asimetricos
+- **Neobrutalism** - Bold, bordes duros
+
+## Comandos
+
+```bash
+npm run dev          # Desarrollo (auto-port 3000-3006)
+npm run build        # Build produccion
+npm run typecheck    # TypeScript check
+npm run lint         # ESLint
+```
+
+## Deploy
+
+```bash
+# Vercel (recomendado)
+npm install -g vercel
+vercel
+```
+
+Variables en Vercel Dashboard:
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+
+## Estructura .claude/
+
+```
+.claude/
+├── skills/              # 19 Skills (V4 Skills 2.0)
+├── PRPs/                # Product Requirements Proposals
+│   │   └── references/  # AI Templates (11 bloques)
+├── design-systems/      # 5 sistemas de diseno
+├── hooks/               # Scripts en eventos
+└── example.mcp.json     # Config de MCPs
+```
 
 ---
 
-## Quick Reference Table
-
-| What to change              | File                     | Key                        |
-|-----------------------------|--------------------------|----------------------------|
-| Mass schedule               | `src/locales/en.json`    | `schedule.masses`          |
-| Sponsor names & phones      | `src/locales/en.json`    | `sponsors.list`            |
-| Parish address / phone      | `src/locales/en.json`    | `contact`                  |
-| Office hours                | `src/locales/en.json`    | `contact.officeHoursLines` |
-| Hero welcome message        | `src/locales/en.json`    | `hero.welcome`             |
-| Donation instructions       | `src/locales/en.json`    | `donations`                |
-| "Last updated" date         | `src/locales/en.json`    | `footer.lastUpdated`       |
-| Photos                      | `public/images/`         | Replace `.jpg` files       |
-
-> Always edit **all three files** (en, es, it) when changing schedules or contact info.
-
----
-
-*Built with Next.js 16 + Tailwind CSS — Diocese of Hamilton*
+**SaaS Factory V4** | Agent-First. Todo es un Skill.

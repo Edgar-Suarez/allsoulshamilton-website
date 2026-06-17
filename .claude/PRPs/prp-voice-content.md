@@ -175,6 +175,11 @@ CREATE POLICY "authenticated_update" ON parish_content
 - **Fix**: `setAll(cookiesToSet: { name: string; value: string; options: CookieOptions }[])` — importar `type CookieOptions from '@supabase/ssr'`.
 - **Aplicar en**: Todo cliente SSR nuevo (server.ts, proxy.ts, route handlers).
 
+### 2026-06-17: OpenAI SDK devuelve tipo complejo, no directamente text
+- **Error**: `transcription.text` no existe. OpenAI SDK `transcriptions.create()` devuelve objeto con múltiples propiedades según el tipo de respuesta.
+- **Fix**: Castear como `(transcription as { text: string }).text` o usar type guard. Archivo debe ser `File` o tipo compatible.
+- **Aplicar en**: Cualquier integración con OpenAI Whisper en Next.js API routes.
+
 ---
 
 ## Gotchas

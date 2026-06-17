@@ -1,76 +1,25 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-/* ─── Base: Senior-Friendly Defaults ─────────────────────────────────────── */
-@layer base {
-  html {
-    font-size: 18px; /* Base 18px for readability */
-    scroll-behavior: smooth;
-  }
+/*
+ * Personaliza tu tema aquí
+ * Documentación: https://tailwindcss.com/docs/theme
+ */
 
-  body {
-    @apply bg-parish-cream text-gray-900 font-sans antialiased;
-    -webkit-text-size-adjust: 100%;
-  }
-
-  /* Focus ring: thick, high-contrast for keyboard/screen-reader users */
-  *:focus-visible {
-    outline: 3px solid #C4922A;
-    outline-offset: 3px;
-    border-radius: 4px;
-  }
-
-  h1, h2, h3 {
-    @apply font-serif tracking-tight;
-  }
-
-  /* All interactive elements meet 48px touch target minimum */
-  button, a, [role="button"] {
-    min-height: 48px;
-    display: inline-flex;
-    align-items: center;
-  }
+/* Smooth scroll for internal navigation */
+html {
+  scroll-behavior: smooth;
 }
 
-/* ─── Reusable Components ─────────────────────────────────────────────────── */
-@layer components {
-  .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3
-           bg-parish-navy text-white font-semibold rounded-parish
-           text-senior-base leading-none
-           hover:bg-parish-navy-dark active:scale-95
-           transition-all duration-150 shadow-sm hover:shadow-md;
-    min-height: 52px;
-  }
+/* Focus styles for accessibility */
+button:focus,
+a:focus {
+  outline: 2px solid #D4A574; /* parish-gold */
+  outline-offset: 2px;
+}
 
-  .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3
-           border-2 border-parish-navy text-parish-navy font-semibold rounded-parish
-           text-senior-base leading-none
-           hover:bg-parish-navy hover:text-white active:scale-95
-           transition-all duration-150;
-    min-height: 52px;
-  }
-
-  .btn-gold {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3
-           bg-parish-gold text-white font-semibold rounded-parish
-           text-senior-base leading-none
-           hover:bg-yellow-600 active:scale-95
-           transition-all duration-150 shadow-sm hover:shadow-md;
-    min-height: 52px;
-  }
-
-  .section-title {
-    @apply text-senior-3xl font-serif font-bold text-parish-navy text-center mb-3;
-  }
-
-  .section-subtitle {
-    @apply text-senior-lg text-parish-muted text-center max-w-2xl mx-auto mb-10;
-  }
-
-  .card {
-    @apply bg-white rounded-parish shadow-sm border border-gray-100 p-6;
+/* Senior-friendly improvements */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }

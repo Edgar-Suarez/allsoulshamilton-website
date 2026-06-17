@@ -7,7 +7,10 @@
   "nav": {
     "schedule": "Mass Schedule",
     "bulletin": "Weekly Bulletin",
+    "weeklySermon": "Sermon",
+    "dailyQuote": "Daily Quote",
     "sacraments": "Sacraments",
+    "announcements": "Announcements",
     "donate": "Donate",
     "menuLabel": "Open menu",
     "languages": { "en": "EN", "es": "ES", "it": "IT" }
@@ -139,5 +142,37 @@
     "padreGreeting": "Welcome, Father",
     "padreComingSoon": "Here you will be able to record the sermon, the daily quote, and announcements. Coming soon.",
     "signOut": "Sign out"
+  },
+  "voiceCms": {
+    "title": "Record content",
+    "subtitle": "Choose what you'd like to record",
+    "sermónLabel": "🎙 Sermon",
+    "frasaLabel": "✝ Daily Quote",
+    "avisoLabel": "📢 Announcement",
+    "selectLabel": "Choose what to record:",
+    "startLabel": "🎙 Start recording",
+    "editLabel": "Edit if needed:",
+    "retryLabel": "🔄 Re-record",
+    "publishLabel": "✓ Publish",
+    "previewHint": "Review the text before publishing",
+    "backLabel": "← Back"
+  },
+  "weeklySermon": {
+    "title": "Weekly Sermon",
+    "subtitle": "Father's Reflection",
+    "noContent": "No sermon recorded yet. Check back soon.",
+    "posted": "Posted"
+  },
+  "dailyQuote": {
+    "title": "Daily Quote",
+    "subtitle": "Spiritual Inspiration",
+    "noContent": "No daily quote yet. Check back soon.",
+    "posted": "Posted"
+  },
+  "announcements": {
+    "title": "Parish Announcements",
+    "subtitle": "Community Updates",
+    "noContent": "No announcements yet. Check back soon.",
+    "posted": "Posted"
   }
 }

@@ -7,9 +7,12 @@ import type { Language } from '@/features/parish/types'
 const LANGUAGES: Language[] = ['en', 'es', 'it']
 
 const NAV_LINKS = [
-  { key: 'schedule', href: '#schedule' },
-  { key: 'sacraments', href: '#sacraments' },
-  { key: 'donate', href: '#donate' },
+  { key: 'schedule', href: '#schedule', ariaLabel: 'Ver horarios de Misa' },
+  { key: 'weeklySermon', href: '#weekly-sermon', ariaLabel: 'Leer sermón de la semana' },
+  { key: 'dailyQuote', href: '#daily-quote', ariaLabel: 'Leer frase del día' },
+  { key: 'sacraments', href: '#sacraments', ariaLabel: 'Información sobre sacramentos' },
+  { key: 'announcements', href: '#announcements', ariaLabel: 'Ver avisos parroquiales' },
+  { key: 'donate', href: '#donate', ariaLabel: 'Opciones de donación' },
 ] as const
 
 export function Navbar() {
@@ -47,15 +50,16 @@ export function Navbar() {
 
           {/* Desktop Navigation */}
           <nav aria-label="Main navigation" className="hidden md:flex items-center gap-1">
-            {NAV_LINKS.map(({ key, href }) => (
+            {NAV_LINKS.map(({ key, href, ariaLabel }) => (
               <a
                 key={key}
                 href={href}
+                aria-label={ariaLabel}
                 className="text-white/85 hover:text-white hover:bg-white/10
                            px-4 py-2 rounded-lg text-senior-base font-medium
-                           transition-all duration-150 min-h-0"
+                           transition-all duration-150 min-h-0 focus:ring-2 focus:ring-parish-gold/50"
               >
-                {t.nav[key]}
+                {(t.nav[key as keyof typeof t.nav] as string | undefined) || key}
               </a>
             ))}
           </nav>
@@ -91,15 +95,16 @@ export function Navbar() {
           className="md:hidden flex items-center overflow-x-auto gap-1 pb-3 -mt-1
                      scrollbar-hide"
         >
-          {NAV_LINKS.map(({ key, href }) => (
+          {NAV_LINKS.map(({ key, href, ariaLabel }) => (
             <a
               key={key}
               href={href}
+              aria-label={ariaLabel}
               className="flex-shrink-0 text-white/80 hover:text-white
                          px-4 py-2 text-sm font-medium whitespace-nowrap
-                         hover:bg-white/10 rounded-lg transition-colors min-h-0"
+                         hover:bg-white/10 rounded-lg transition-colors min-h-0 focus:ring-2 focus:ring-parish-gold/50"
             >
-              {t.nav[key]}
+              {(t.nav[key as keyof typeof t.nav] as string | undefined) || key}
             </a>
           ))}
         </nav>

@@ -7,7 +7,10 @@
   "nav": {
     "schedule": "Horarios de Misa",
     "bulletin": "Boletín Semanal",
+    "weeklySermon": "Sermón",
+    "dailyQuote": "Frase del Día",
     "sacraments": "Sacramentos",
+    "announcements": "Avisos",
     "donate": "Donar",
     "menuLabel": "Abrir menú",
     "languages": { "en": "EN", "es": "ES", "it": "IT" }
@@ -139,5 +142,37 @@
     "padreGreeting": "Bienvenido, Padre",
     "padreComingSoon": "Aquí podrá grabar el sermón, la frase del día y los avisos. Muy pronto.",
     "signOut": "Cerrar sesión"
+  },
+  "voiceCms": {
+    "title": "Grabar contenido",
+    "subtitle": "Selecciona qué deseas grabar",
+    "sermónLabel": "🎙 Sermón",
+    "frasaLabel": "✝ Frase del día",
+    "avisoLabel": "📢 Aviso",
+    "selectLabel": "Selecciona qué grabar:",
+    "startLabel": "🎙 Empezar a grabar",
+    "editLabel": "Edita si es necesario:",
+    "retryLabel": "🔄 Regrabar",
+    "publishLabel": "✓ Publicar",
+    "previewHint": "Revisa el texto antes de publicar",
+    "backLabel": "← Volver"
+  },
+  "weeklySermon": {
+    "title": "Sermón de la Semana",
+    "subtitle": "Reflexión del Padre",
+    "noContent": "Aún no hay sermón grabado. Vuelve pronto.",
+    "posted": "Publicado"
+  },
+  "dailyQuote": {
+    "title": "Frase del Día",
+    "subtitle": "Inspiración espiritual",
+    "noContent": "Aún no hay frase del día. Vuelve pronto.",
+    "posted": "Publicado"
+  },
+  "announcements": {
+    "title": "Avisos Parroquiales",
+    "subtitle": "Comunicados de la comunidad",
+    "noContent": "Sin avisos por ahora. Vuelve pronto.",
+    "posted": "Publicado"
   }
 }

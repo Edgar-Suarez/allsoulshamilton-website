@@ -7,6 +7,13 @@ export interface MassEntry {
   notes: string
 }
 
+export interface ParishContentDisplay {
+  id: string
+  section: 'sermon' | 'quote' | 'announcement'
+  content: string
+  created_at: string
+}
+
 export interface SponsorEntry {
   name: string
   category: string
@@ -29,7 +36,10 @@ export interface Translations {
   nav: {
     schedule: string
     bulletin: string
+    weeklySermon: string
+    dailyQuote: string
     sacraments: string
+    announcements: string
     donate: string
     menuLabel: string
     languages: { en: string; es: string; it: string }
@@ -96,5 +106,37 @@ export interface Translations {
     padreGreeting: string
     padreComingSoon: string
     signOut: string
+  }
+  voiceCms?: {
+    title: string
+    subtitle: string
+    sermónLabel: string
+    frasaLabel: string
+    avisoLabel: string
+    selectLabel: string
+    startLabel: string
+    editLabel: string
+    retryLabel: string
+    publishLabel: string
+    previewHint: string
+    backLabel: string
+  }
+  weeklySermon: {
+    title: string
+    subtitle: string
+    noContent: string
+    posted: string
+  }
+  dailyQuote: {
+    title: string
+    subtitle: string
+    noContent: string
+    posted: string
+  }
+  announcements: {
+    title: string
+    subtitle: string
+    noContent: string
+    posted: string
   }
 }
