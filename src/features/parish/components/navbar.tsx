@@ -20,80 +20,77 @@ export function Navbar() {
 
   return (
     <header className="bg-parish-navy shadow-lg sticky top-0 z-50">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Main bar */}
-        <div className="flex items-center justify-between gap-4 h-20">
+        {/* Main Navigation Bar */}
+        <div className="flex items-center justify-between h-16">
 
-          {/* Logo + Parish Name */}
-          <a href="/" className="flex items-center gap-3 group min-h-0 py-0">
-            <div className="relative w-10 h-10 flex-shrink-0 rounded-full overflow-hidden border-2 border-parish-gold/50
-                            group-hover:border-parish-gold transition-colors">
+          {/* Logo + Name Section */}
+          <a href="/" className="flex items-center gap-2 group flex-shrink-0">
+            <div className="relative w-12 h-12 rounded-lg overflow-hidden border-2 border-parish-gold/50 group-hover:border-parish-gold transition-colors">
               <Image
                 src="/images/church-logo.jpg"
-                alt="Our Lady of All Souls Parish crest"
+                alt="All Souls Parish"
                 fill
-                className="object-cover object-center"
-                sizes="40px"
+                className="object-cover"
+                sizes="48px"
               />
             </div>
-            <div className="leading-tight">
-              <p className="text-white font-serif font-bold text-senior-lg leading-snug
-                            group-hover:text-parish-gold-light transition-colors">
-                {t.site.shortName}
+            <div className="hidden sm:block">
+              <p className="text-white font-serif font-bold text-base leading-tight group-hover:text-parish-gold-light transition-colors">
+                All Souls
               </p>
-              <p className="text-parish-gold/80 text-sm hidden sm:block">
-                {t.site.location}
+              <p className="text-parish-gold/70 text-xs">
+                Hamilton
               </p>
             </div>
           </a>
 
-          {/* Desktop Navigation */}
-          <nav aria-label="Main navigation" className="hidden md:flex items-center gap-1">
+          {/* Desktop Navigation - Centered */}
+          <nav aria-label="Main navigation" className="hidden md:flex items-center gap-2 flex-1 justify-center">
             {NAV_LINKS.map(({ key, href, ariaLabel }) => (
               <a
                 key={key}
                 href={href}
                 aria-label={ariaLabel}
-                className="text-white/85 hover:text-white hover:bg-white/10
-                           px-4 py-2 rounded-lg text-senior-base font-medium
-                           transition-all duration-150 min-h-0 focus:ring-2 focus:ring-parish-gold/50"
+                className="text-white/80 hover:text-white hover:bg-parish-gold/20
+                           px-3 py-2 rounded-md text-sm font-medium
+                           transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-parish-gold"
               >
                 {(t.nav[key as keyof typeof t.nav] as string | undefined) || key}
               </a>
             ))}
           </nav>
 
-          {/* Language Selector — always visible, high-contrast */}
+          {/* Language Selector - Right */}
           <div
             role="group"
             aria-label="Language selector"
-            className="flex items-center gap-1 bg-white/10 rounded-xl p-1 flex-shrink-0"
+            className="flex items-center gap-1 bg-white/10 rounded-lg p-1 flex-shrink-0"
           >
             {LANGUAGES.map((l) => (
               <button
                 key={l}
                 onClick={() => setLang(l)}
                 aria-pressed={lang === l}
-                aria-label={`Switch to ${l.toUpperCase()}`}
-                className={`px-3 sm:px-4 py-2 rounded-lg text-senior-base font-bold uppercase
-                            transition-all duration-150 leading-none min-h-0
+                aria-label={`${l.toUpperCase()}`}
+                className={`px-2.5 py-1.5 rounded-md text-xs font-bold uppercase
+                            transition-all duration-150
                             ${lang === l
-                              ? 'bg-parish-gold text-white shadow-sm scale-105'
-                              : 'text-white/75 hover:text-white hover:bg-white/10'
+                              ? 'bg-parish-gold text-parish-navy shadow-sm'
+                              : 'text-white/70 hover:text-white hover:bg-white/5'
                             }`}
               >
-                {t.nav.languages[l]}
+                {l}
               </button>
             ))}
           </div>
         </div>
 
-        {/* Mobile sub-navigation (scrollable) */}
+        {/* Mobile Navigation - Horizontal Scroll */}
         <nav
           aria-label="Mobile navigation"
-          className="md:hidden flex items-center overflow-x-auto gap-1 pb-3 -mt-1
-                     scrollbar-hide"
+          className="md:hidden flex items-center gap-1 pb-2 overflow-x-auto scrollbar-hide"
         >
           {NAV_LINKS.map(({ key, href, ariaLabel }) => (
             <a
@@ -101,8 +98,8 @@ export function Navbar() {
               href={href}
               aria-label={ariaLabel}
               className="flex-shrink-0 text-white/80 hover:text-white
-                         px-4 py-2 text-sm font-medium whitespace-nowrap
-                         hover:bg-white/10 rounded-lg transition-colors min-h-0 focus:ring-2 focus:ring-parish-gold/50"
+                         px-3 py-1.5 text-xs font-medium whitespace-nowrap
+                         hover:bg-white/10 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-parish-gold"
             >
               {(t.nav[key as keyof typeof t.nav] as string | undefined) || key}
             </a>

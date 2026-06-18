@@ -195,19 +195,21 @@ function ContactBlock() {
   const { address, phone, email, officeHoursLabel, officeHoursLines, youtubeLabel, youtubeUrl, addressLabel, contactLabel } = t.contact
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center sm:text-left">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
 
       {/* Address + Phone */}
-      <div>
-        <h4 className="text-parish-gold font-semibold text-senior-base mb-3 uppercase tracking-wide">
-          {addressLabel}
-        </h4>
-        <address className="not-italic text-white/85 text-senior-base leading-relaxed">
-          {address}
-        </address>
+      <div className="flex flex-col gap-4">
+        <div>
+          <h4 className="text-parish-gold font-semibold text-sm uppercase tracking-widest mb-3">
+            {addressLabel}
+          </h4>
+          <address className="not-italic text-white/80 text-base leading-relaxed text-sm">
+            {address}
+          </address>
+        </div>
         <a
           href={`tel:${phone.replace(/[^+\d]/g, '')}`}
-          className="block mt-2 text-white font-bold text-senior-lg hover:text-parish-gold transition-colors"
+          className="inline-flex text-white font-bold text-lg hover:text-parish-gold transition-colors"
           aria-label={`Phone: ${phone}`}
         >
           {phone}
@@ -216,10 +218,10 @@ function ContactBlock() {
 
       {/* Office Hours */}
       <div>
-        <h4 className="text-parish-gold font-semibold text-senior-base mb-3 uppercase tracking-wide">
+        <h4 className="text-parish-gold font-semibold text-sm uppercase tracking-widest mb-3">
           {officeHoursLabel}
         </h4>
-        <div className="text-white/85 text-senior-base leading-relaxed space-y-1">
+        <div className="text-white/80 text-sm leading-relaxed space-y-1">
           {officeHoursLines.map((line, i) => (
             <p key={i}>{line}</p>
           ))}
@@ -227,22 +229,24 @@ function ContactBlock() {
       </div>
 
       {/* Email + YouTube */}
-      <div>
-        <h4 className="text-parish-gold font-semibold text-senior-base mb-3 uppercase tracking-wide">
-          {contactLabel}
-        </h4>
-        <a
-          href={`mailto:${email}`}
-          className="block text-white/85 hover:text-white text-senior-base break-all transition-colors"
-        >
-          {email}
-        </a>
+      <div className="flex flex-col gap-4">
+        <div>
+          <h4 className="text-parish-gold font-semibold text-sm uppercase tracking-widest mb-3">
+            {contactLabel}
+          </h4>
+          <a
+            href={`mailto:${email}`}
+            className="text-white/80 hover:text-white text-sm break-all transition-colors"
+          >
+            {email}
+          </a>
+        </div>
         <a
           href={youtubeUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 mt-3 text-white/85 hover:text-parish-gold
-                     text-senior-base transition-colors font-medium"
+          className="inline-flex items-center gap-2 text-white/80 hover:text-parish-gold
+                     text-sm transition-colors font-medium w-fit"
           aria-label={youtubeLabel}
         >
           <YoutubeIcon />
@@ -274,66 +278,75 @@ export function SponsorsFooter() {
       <BulletinSection youtubeUrl={t.contact.youtubeUrl} />
 
       {/* ── Sponsors Section ────────────────────────────────────────────── */}
-      <section id="sponsors" className="py-16 sm:py-24 bg-parish-cream">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+      <section id="sponsors" className="py-20 sm:py-28 bg-parish-cream">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Section header */}
-          <div className="text-center mb-10">
-            <h2 className="section-title">{sponsors.title}</h2>
-            <p className="section-subtitle">{sponsors.subtitle}</p>
+          <div className="text-center mb-16">
+            <span className="block text-parish-gold text-4xl mb-4 select-none" aria-hidden="true">✝</span>
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-parish-navy mb-3">
+              {sponsors.title}
+            </h2>
+            <p className="text-lg text-parish-muted max-w-2xl mx-auto">
+              {sponsors.subtitle}
+            </p>
           </div>
 
-          {/* Sponsors ads image — B&W bulletin sponsors page, same size as bulletin carousel */}
-          <div className="px-4 sm:px-8 mb-10">
-            <div className="relative w-full max-w-4xl mx-auto rounded-parish overflow-hidden
-                            shadow-[0_20px_60px_rgba(0,0,0,0.15)]"
+          {/* Sponsors ads image */}
+          <div className="mb-16">
+            <div className="relative w-full max-w-3xl mx-auto rounded-lg overflow-hidden
+                            shadow-[0_10px_40px_rgba(27,58,92,0.15)]"
                  style={{ aspectRatio: '1100 / 1485' }}>
               <Image
                 src="/images/sponsors-ads.jpg"
-                alt="Parish bulletin sponsors and local business advertisements"
+                alt="Local business partners and sponsors"
                 fill
                 className="object-cover"
-                sizes="(max-width: 640px) 95vw, (max-width: 1280px) 85vw, 896px"
+                sizes="(max-width: 640px) 95vw, (max-width: 1280px) 80vw, 768px"
               />
             </div>
           </div>
 
           {/* Sponsor grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mb-10">
-            {sponsors.list.map((sponsor) => (
-              <SponsorCard
-                key={sponsor.name}
-                name={sponsor.name}
-                category={sponsor.category}
-                phone={sponsor.phone}
-              />
-            ))}
+          <div className="mb-12">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {sponsors.list.map((sponsor) => (
+                <SponsorCard
+                  key={sponsor.name}
+                  name={sponsor.name}
+                  category={sponsor.category}
+                  phone={sponsor.phone}
+                />
+              ))}
 
-            {/* "Become a sponsor" placeholder card */}
-            <a
-              href={`mailto:${sponsors.contactEmail}?subject=Parish%20Bulletin%20Sponsorship`}
-              className="bg-parish-navy/5 border-2 border-dashed border-parish-navy/25 rounded-lg
-                         px-4 py-3 text-center flex flex-col items-center justify-center gap-2
-                         hover:border-parish-gold hover:bg-parish-gold/5 transition-all group
-                         cursor-pointer"
-              aria-label={sponsors.cta}
-            >
-              <span className="text-2xl text-parish-navy/30 group-hover:text-parish-gold transition-colors">+</span>
-              <p className="text-parish-navy/60 text-sm font-medium group-hover:text-parish-navy leading-tight">
-                {sponsors.cta}
-              </p>
-            </a>
+              {/* "Become a sponsor" card */}
+              <a
+                href={`mailto:${sponsors.contactEmail}?subject=Parish%20Bulletin%20Sponsorship`}
+                className="bg-white rounded-lg p-6 text-center border-2 border-dashed border-parish-navy/20
+                           hover:border-parish-gold hover:shadow-lg transition-all group cursor-pointer
+                           flex flex-col items-center justify-center gap-3 min-h-[120px]"
+                aria-label="Become a sponsor"
+              >
+                <span className="text-3xl text-parish-navy/30 group-hover:text-parish-gold transition-colors font-light">+</span>
+                <p className="text-parish-navy font-semibold text-sm">
+                  Become a Sponsor
+                </p>
+              </a>
+            </div>
           </div>
 
           {/* CTA banner */}
-          <div className="bg-parish-navy rounded-parish p-6 sm:p-8 text-center">
-            <p className="text-white font-serif text-senior-xl font-bold mb-2">
+          <div className="bg-gradient-to-r from-parish-navy to-parish-navy/90 rounded-lg p-8 sm:p-12 text-center">
+            <p className="text-white font-serif text-2xl sm:text-3xl font-bold mb-3">
               {sponsors.cta}
             </p>
-            <p className="text-white/80 text-senior-base mb-5">{sponsors.ctaDescription}</p>
+            <p className="text-white/80 text-base sm:text-lg mb-6 max-w-2xl mx-auto">
+              {sponsors.ctaDescription}
+            </p>
             <a
               href={`mailto:${sponsors.contactEmail}?subject=Parish%20Bulletin%20Sponsorship`}
-              className="btn-gold inline-flex"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-parish-gold text-parish-navy
+                         font-bold rounded-lg hover:bg-parish-gold-light transition-colors shadow-md"
             >
               {sponsors.cta}
             </a>
@@ -345,19 +358,22 @@ export function SponsorsFooter() {
       {/* ── Contact + Bottom Footer ──────────────────────────────────────── */}
       <div className="bg-parish-navy">
 
-        {/* Contact strip */}
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 border-b border-white/10">
+        {/* Contact section */}
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-b border-white/10">
           <ContactBlock />
         </div>
 
         {/* Copyright bar */}
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-5
-                        flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="text-white/60 text-sm text-center sm:text-left">
-            {footer.copyright} · {footer.diocese}
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6
+                        flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-white/70 text-sm">
+            {footer.copyright}
           </p>
-          <p className="text-white/40 text-sm text-center">
+          <p className="text-white/50 text-xs">
             {footer.lastUpdated}
+          </p>
+          <p className="text-white/50 text-xs">
+            {footer.diocese}
           </p>
         </div>
 

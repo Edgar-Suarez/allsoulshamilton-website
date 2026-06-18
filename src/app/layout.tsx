@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { LanguageProvider } from '@/shared/contexts/language-context'
 
 export const metadata: Metadata = {
-  title: 'SaaS Factory App',
-  description: 'Built with SaaS Factory',
+  title: 'Our Lady of All Souls Parish',
+  description: 'Our Lady of All Souls Parish - Hamilton, Ontario',
 }
 
 export default function RootLayout({
@@ -13,7 +14,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
+      </body>
     </html>
   )
 }
